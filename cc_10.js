@@ -105,3 +105,24 @@ inventoryWithOrders.placeOrder(601, prod1, 2);
 inventoryWithOrders.listOrders();
 
 console.log(prod1.getDetails());
+
+
+// Task 5: Implementing Product Restocking
+
+class InventoryWithRestocking extends InventoryWithOrders {
+    restockProduct(productId, quantity) {
+        const product = this.products.find(p => p.id === productId);
+        if (product) {
+            product.stock += quantity;
+        } else {
+            console.log("Product not found!");
+        }
+    }
+}
+
+
+// Test Cases for Task 5 
+const inventoryWithRestocking = new InventoryWithRestocking();
+inventoryWithRestocking.addProduct(prod1);
+inventoryWithRestocking.restockProduct(101, 5);
+console.log(prod1.getDetails());
